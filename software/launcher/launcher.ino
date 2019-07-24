@@ -59,14 +59,6 @@ void setup() {
 
   pinMode(pin_battery, INPUT);
   pinMode(pin_potentiometer, INPUT);
-
-  writeNumber(29);
-  delay(1000);
-  writeNumber(55);
-  delay(500);
-  writeNumber(79);
-  delay(250);
-  writeNumber(99);
 }
 
 void loop() {
@@ -74,9 +66,11 @@ void loop() {
 }
 
 void writeNumber(int number) {
-  segA.write(number % 10);
+  segB.write(number % 10);
   if(number < 10) {
     segA.clear();
   }
-  segB.write(number/10 % 10);
+  else {
+    segA.write(number/10 % 10);
+  }
 }
