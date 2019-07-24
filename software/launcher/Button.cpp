@@ -17,11 +17,12 @@ Button::Button(int pin, bool pullup, int timeout) {
 
   _pin = pin;
   _timeout = timeout;
+  _pullup = pullup;
 }
 
 bool Button::pushed() {
   if(millis()-lastRead >= _timeout) {
-    if(digitalRead(_pin) == 1) {
+    if(digitalRead(_pin) == !_pullup) {
       lastRead = millis();
       return true;
     }
@@ -32,9 +33,9 @@ bool Button::pushed() {
 
 long Button::held() {
   if(millis()-lastRead >= _timeout) {
-    if(digitalRead(_pin) == 1) {
+    if(digitalRead(_pin) == !_pullup) {
       heldTime = millis();
-      while(digitalRead(_pin) == 1) {
+      while(digitalRead(_pin) == !_pullup) {
         ;
       }
       return millis()-heldTime;

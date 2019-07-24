@@ -12,7 +12,7 @@
 class Button {
   private:
     int _pin;
-    bool pullup;
+    bool _pullup;
     unsigned long long lastRead = 0;
     unsigned long long heldTime = 0;
     int _timeout;

@@ -59,10 +59,14 @@ Button buttonBlue(pin_button_blue, true, 500);
 Buzzer buzzer(pin_buzzer);
 
 void setup() {
-  buzzer.start_buzz();
 
   pinMode(pin_battery, INPUT);
   pinMode(pin_potentiometer, INPUT);
+  pinMode(pin_led_1, OUTPUT);
+  pinMode(pin_led_2, OUTPUT);
+  pinMode(pin_starter, OUTPUT);
+
+  buzzer.buzz(250);
 }
 
 void loop() {
