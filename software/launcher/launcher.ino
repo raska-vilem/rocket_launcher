@@ -43,8 +43,12 @@
 //potentiometer
 #define pin_potentiometer A5
 
-//battery detect
+//battery voltage detect
 #define pin_battery A2
+
+//battery indicaion LEDs
+#define pin_led_1 A0
+#define pin_led_2 A1
 
 Segment segA(A_1, A_2, A_3, A_4, A_5, A_6, A_7, true);
 Segment segB(B_1, B_2, B_3, B_4, B_5, B_6, B_7, true);
