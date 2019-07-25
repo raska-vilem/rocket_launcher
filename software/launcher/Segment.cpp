@@ -41,12 +41,12 @@ void Segment::write(int number) {
 void Segment::clear() {
   if(pin_normal) {
     for(int i=0; i<7; i++) {
-      digitalWrite(pin[i], !digitData[10][i]);
+      digitalWrite(pin[i], !digitData[17][i]);
     }
   }
   else {
     for(int i=0; i<7; i++) {
-      digitalWrite(pin[i], digitData[10][i]);
+      digitalWrite(pin[i], digitData[17[i]);
     }
   }
 }
