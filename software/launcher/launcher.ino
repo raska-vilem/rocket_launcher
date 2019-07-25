@@ -102,7 +102,7 @@ void setup() {
 
 void loop() {
   if(buttonBlue.pushed()) {
-    buzzer.buzz(100);
+    buzzer.buzz(150);
     timeSettings();
   }
 }
@@ -167,7 +167,7 @@ int setCountdownTime() {
     
   }
 
-  buzzer.buzz(150);
+  buzzer.buzz(75);
 
   return countdown;
 }
@@ -208,7 +208,7 @@ int setIgnitionTime() {
     }
   }
 
-  buzzer.buzz(150);
+  buzzer.buzz(75);
 
   return ignition;
 }
