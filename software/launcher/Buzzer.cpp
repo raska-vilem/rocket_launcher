@@ -24,10 +24,10 @@ void Buzzer::buzz(int time) {
   digitalWrite(_pin, LOW);
 }
 
-void Buzzer::start_buzz() {
+void Buzzer::start() {
   digitalWrite(_pin, HIGH);
 }
 
-void Buzzer::stop_buzz() {
+void Buzzer::stop() {
   digitalWrite(_pin, LOW);
 }

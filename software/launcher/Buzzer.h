@@ -13,8 +13,8 @@ class Buzzer {
   public:
     Buzzer(int pin);
     void buzz(int time);
-    void start_buzz();
-    void stop_buzz();
+    void start();
+    void stop();
 
   private:
     int _pin;
