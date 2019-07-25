@@ -54,6 +54,7 @@
 #define max_ignition_time 50    //tenth of second
 #define countdown_beep_time 100 //milliseconds
 #define blink_speed 600         //milliseconds
+#define blink_delay 500         //milliseconds
 
 
 
@@ -68,6 +69,7 @@ Buzzer buzzer(pin_buzzer);
 
 int countdown_time;
 int ignition_time;
+bool state = false;
 
 void setup() {
   pinMode(pin_battery, INPUT);
@@ -105,6 +107,8 @@ void loop() {
     buzzer.buzz(150);
     timeSettings();
   }
+
+  
 }
 
 void writeNumber(int number) {
@@ -133,38 +137,40 @@ bool wait(int time) {
 int setCountdownTime() {
   segA.write(12);
   segB.clear();
-  wait(500);
+  wait(750);
   
   int countdown;
   int countdown_last;
   unsigned long long timePoint = millis();
-  bool status = true;
+  unsigned long long timePoint_blink_delay = millis();
+  bool state = true;
   
   while(!buttonBlue.pushed()) {
-    wait(50);
     countdown = map(analogRead(pin_potentiometer), 1023, 0, 0, max_countdown_time+1);
 
     if(countdown == countdown_last) {
-      if(millis() - timePoint >= blink_speed) {
-        timePoint = millis();
-        
-        if(status) {
-          writeNumber(countdown);
-          status = !status;
-        }
-        
-        else {
-          segA.clear();
-          segB.clear();
-          status = !status;
+      if(millis() - timePoint_blink_delay >= blink_delay) {
+        if(millis() - timePoint >= blink_speed) {
+          timePoint = millis();
+          
+          if(state) {
+            writeNumber(countdown);
+            state = !state;
+          }
+          
+          else {
+            segA.clear();
+            segB.clear();
+            state = !state;
+          }
         }
       }
     }
     else {
       writeNumber(countdown);
       countdown_last = countdown;
+      timePoint_blink_delay = millis();
     }
-    
   }
 
   buzzer.buzz(75);
@@ -175,36 +181,39 @@ int setCountdownTime() {
 int setIgnitionTime() {
   segA.write(11);
   segB.clear();
-  wait(500);
+  wait(750);
   
   int ignition;
   int ignition_last;
   unsigned long long timePoint = millis();
-  bool status = true;
+  unsigned long long timePoint_blink_delay = millis();
+  bool state = true;
   
   while(!buttonBlue.pushed()) {
-    wait(50);
     ignition = map(analogRead(pin_potentiometer), 1023, 0, 0, max_ignition_time+1);
 
     if(ignition == ignition_last) {
-      if(millis() - timePoint >= blink_speed) {
-        timePoint = millis();
-        
-        if(status) {
-          writeNumber(ignition);
-          status = !status;
-        }
-        
-        else {
-          segA.clear();
-          segB.clear();
-          status = !status;
+      if(millis() - timePoint_blink_delay >= blink_delay) {
+        if(millis() - timePoint >= blink_speed) {
+          timePoint = millis();
+          
+          if(state) {
+            writeNumber(ignition);
+            state = !state;
+          }
+          
+          else {
+            segA.clear();
+            segB.clear();
+            state = !state;
+          }
         }
       }
     }
     else {
       writeNumber(ignition);
       ignition_last = ignition;
+      timePoint_blink_delay = millis();
     }
   }
 
