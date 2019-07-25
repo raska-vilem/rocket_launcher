@@ -46,7 +46,7 @@ void Segment::clear() {
   }
   else {
     for(int i=0; i<7; i++) {
-      digitalWrite(pin[i], digitData[17[i]);
+      digitalWrite(pin[i], digitData[17][i]);
     }
   }
 }
