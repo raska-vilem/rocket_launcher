@@ -2,8 +2,8 @@ lcd_width = 21;
 lcd_height = 16.6;
 lcd_deepth = 4.6;
 wall_thickness = 2.15;
-hole_width = 25.3;
-hole_height = 17.3;
+hole_width = 26.3;
+hole_height = 17.8;
 
 difference() {
     union() {
