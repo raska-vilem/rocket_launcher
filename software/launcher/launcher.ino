@@ -51,13 +51,14 @@
 
 //time definitions
 #define max_countdown_time 30   //seconds
-#define max_ignition_time 5    //seconds
+#define max_ignition_time 5     //seconds
 #define min_ignition_time 1     //seconds
 #define countdown_beep_time 100 //milliseconds
 #define blink_speed 600         //milliseconds
 #define blink_delay 500         //milliseconds
 #define change_speed 2000       //milliseconds
 #define char_show_time 750      //milliseconds
+#define start_button_time 1000  //milliseconds
 
 
 
@@ -112,7 +113,7 @@ void loop() {
     buzzer.buzz(150);
     timeSettings();
   }
-  else if(buttonRed.held() >= 2000) {
+  else if(buttonRed.held() >= start_button_time) {
     countDown();
   }
 
